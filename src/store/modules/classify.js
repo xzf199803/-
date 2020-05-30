@@ -1,17 +1,17 @@
-import {reqcateNavDatas} from '../../api'
+import {reqcateLists} from '../../api'
 const state = {
   items:[]
 }
 const mutations = {
-  CATENAVDATAS (state, items) {
+  CATELISTS (state, items) {
     state.items = items
   },
 }
 const actions = {
-  async getcateNavDatas ({commit}) {
-    const result = await reqcateNavDatas()
+  async getcateLists ({commit}) {
+    const result = await reqcateLists()
     if (result.code === 200) {
-      commit('CATENAVDATAS', result.data)
+      commit('CATELISTS', result.data)
     }
   },
   
