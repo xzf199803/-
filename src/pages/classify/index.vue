@@ -6,20 +6,13 @@
         <span>搜索商品，共254615款好物</span>
       </van-button>
     </div>
-      <div class="con" v-for="item1 in items" :key="item1.id">
-        <ul class="list" @touchstart=tologo >
-          <li class="listItem" :data-category1Id="item1.id">{{item1.name}}</li>
+      <div class="con" >
+        <ul class="list" @touchstart=tologo v-for="item1 in items" :key="item1.id">
+          <li class="listItem" :data-category1Id="item1.id">
+            <router-link :to="`/classify/list1/${item1.id}`"> {{item1.name}}</router-link>
+           
+          </li>
         </ul>
-      
-      <div class="listimg" v-for="item2 in item1.categoryList" :key="item2.superCategoryId" >
-        <img :src=item1.bannerUrl alt="">
-        <ul class="listimg_item">
-          <li class="listItem_item">
-            <img :src=item2.bannerUrl alt="">
-            <p>{{item2.name}}</p>
-          </li>    
-        </ul>
-      </div>
     </div> 
   </div>
 </template>
@@ -48,12 +41,20 @@ export default {
     //   console.log(this.items);
       
     // }
-     this.$store.dispatch('getcateLists')
+     this.$store.dispatch('getcateNavDatas')
+     console.log(this.$store);
+     
+     
+     
+     
+     
      
   },
    methods: {
-      tologo(id){
-        console.log(id);
+   
+      tologo(){
+        // console.log(this.items);
+        // console.log(id);
         
        
       }
@@ -97,9 +98,6 @@ export default {
       height 100%
       text-align center
       margin 14px 0
-    .listItem:hover
-      .listimg
-        display block
     .active
       border-left 3px solid #F00
       color #f00
